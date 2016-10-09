@@ -13,6 +13,8 @@ public class Car {
     private Integer yearOfFab;
     private String plateNumber;
     private double price;
+    @ManyToOne  //un coche sólo puede pertenecer a una persona
+    private Person owner;
 
 
     public Car(long id, String brand, String model, Integer yearOfFab, String plateNumber, double price) {
@@ -73,6 +75,14 @@ public class Car {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
     }
 
     @Override

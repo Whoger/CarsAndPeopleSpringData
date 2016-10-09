@@ -1,6 +1,7 @@
 package com.example.repository;
 
 import com.example.domain.Car;
+import com.example.domain.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -32,6 +33,8 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     List<Car> findByBrand(String brand);
 
+    List<Car> findByOwner(Person owner);
+
     List<Car> findByYearOfFab(Integer yearOfFab);
 
 
@@ -39,6 +42,31 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     @Query("SELECT AVG(car.price) from Car car WHERE car.brand = :brand ")
     Double findAveragePerBrand(@Param("brand") String brand);
+
+    @Query("SELECT car FROM Car car WHERE car.owner = :owner")
+    List<Car> findCarByOwner(@Param("owner") Person owner);
+
+    @Query("SELECT car FROM Car car WHERE car.owner =:owner AND car.price >=:price")
+    List<Car> findCarByOwnerAndPriceGreaterThan(
+            @Param("owner") Person owner,
+            @Param("price") Double price);
+
+    @Query("SELECT car FROM Car car WHERE car.owner =:owner " +
+            "AND car.price >=:price " +
+            "AND car.yearOfFab  between :minYear AND :maxYear")
+    List<Car> findCarByOwnerAndPriceAndRangeYearOFFab(
+            @Param("owner") Person owner,
+            @Param("price") Double price,
+            @Param("minYear") Integer minYear,
+            @Param("maxYear") Integer maxYear);
+
+    @Query("SELECT car FROM Car car WHERE car.owner.age >=:age")
+    List<Car> findCarListWithOwnersOlderThan(@Param("age") Integer age);
+
+    @Query("SELECT car FROM Car car WHERE car.owner.age between :minAge and :maxAge")
+    List<Car> findCarListWithOwnersAgeBetween(
+            @Param("minAge") Integer minAge,
+            @Param("maxAge") Integer maxAge);
 
     @Query("SELECT car FROM Car car WHERE car.plateNumber LIKE CONCAT('%',:plateNumberPart,'%')")
     List<Car> findCarByPlateNumberSubstring(@Param("plateNumberPart") String plateNumberPart);
