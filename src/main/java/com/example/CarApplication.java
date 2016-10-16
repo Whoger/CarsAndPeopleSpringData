@@ -4,7 +4,7 @@ import com.example.service.CarService;
 import com.example.service.PersonService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.orm.jpa.EntityScan;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
