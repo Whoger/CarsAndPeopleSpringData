@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 
 @Entity
@@ -14,6 +15,9 @@ public class Person {
     private String name;
     private String surname;
     private Integer age;
+
+    // Just to test the new LocalDate with JPA
+    private LocalDate birthday;
 
     public Long getId() {
         return id;
@@ -47,14 +51,12 @@ public class Person {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", age=" + age +
-                '}';
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 
     @Override
@@ -64,19 +66,32 @@ public class Person {
 
         Person person = (Person) o;
 
-        if (!getId().equals(person.getId())) return false;
-        if (!getName().equals(person.getName())) return false;
-        if (!getSurname().equals(person.getSurname())) return false;
-        return getAge().equals(person.getAge());
+        if (id != null ? !id.equals(person.id) : person.id != null) return false;
+        if (name != null ? !name.equals(person.name) : person.name != null) return false;
+        if (surname != null ? !surname.equals(person.surname) : person.surname != null) return false;
+        if (age != null ? !age.equals(person.age) : person.age != null) return false;
+        return birthday != null ? birthday.equals(person.birthday) : person.birthday == null;
 
     }
 
     @Override
     public int hashCode() {
-        int result = getId().hashCode();
-        result = 31 * result + getName().hashCode();
-        result = 31 * result + getSurname().hashCode();
-        result = 31 * result + getAge().hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (age != null ? age.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", age=" + age +
+                ", birthday=" + birthday +
+                '}';
     }
 }

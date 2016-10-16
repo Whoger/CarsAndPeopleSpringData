@@ -17,8 +17,7 @@ public class Car {
     private Person owner;
 
 
-    public Car(long id, String brand, String model, Integer yearOfFab, String plateNumber, double price) {
-        this.id = id;
+    public Car(String brand, String model, Integer yearOfFab, String plateNumber, double price) {
         this.brand = brand;
         this.model = model;
         this.yearOfFab = yearOfFab;

@@ -5,6 +5,8 @@ import com.example.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 
 @Service
 public class PersonService {
@@ -14,13 +16,15 @@ public class PersonService {
     public void testPeople(){
         Person person1 = new Person();
         person1.setName("Ivan");
-        person1.setAge(23);
+        person1.setAge(36);
+        person1.setBirthday(LocalDate.of(1980, 1, 1));
         personRepository.save(person1);
 
 
         Person person2 = new Person();
         person2.setName("Dimple");
-        person2.setAge(26);
+        person2.setAge(21);
+        person2.setBirthday(LocalDate.of(1995, 1, 1));
         personRepository.save(person2);
 
         Person person3 =new Person();
@@ -75,6 +79,9 @@ public class PersonService {
         System.out.println("All people named Noelia or with surname Villa are the following: ");
         System.out.println(
                 personRepository.findByNameOrSurname("Noelia","Villa"));
+
+        System.out.println("All people that were born after 1994:");
+        System.out.println(personRepository.findByBirthdayAfter(LocalDate.of(1994,1,1)));
 
     }
 }

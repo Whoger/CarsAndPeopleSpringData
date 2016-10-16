@@ -22,7 +22,7 @@ public class CarService {
 
     public void testCars(){
 
-        Car car1= new Car(1L,"Jaguar","TheRoadIsYours",2016,"1234ENG", 61405.00);
+        Car car1= new Car("Jaguar","TheRoadIsYours",2016,"1234ENG", 61405.00);
         Person person = new Person();
         person.setName("Alfredo");
         person.setAge(37);
@@ -31,46 +31,46 @@ public class CarService {
         carRepository.save(car1);
 
 
-        Car car2= new Car (2L,"BMW","LoveAtFirstDrive",2014,"9065AME", 75399.00);
+        Car car2= new Car ("BMW","LoveAtFirstDrive",2014,"9065AME", 75399.00);
         Person noelia = personRepository.findOne(3L);
         car2.setOwner(noelia);
         carRepository.save(car2);
 
-        Car car3= new Car (3L,"Lexus","LC500",2016,"5638DDD",85500.00);
+        Car car3= new Car ("Lexus","LC500",2016,"5638DDD",85500.00);
         Person david = personRepository.findOne(7L);
         car3.setOwner(david);
         carRepository.save(car3);
 
 
-        Car car4= new Car (4L,"Aston Martin","DB10",2015,"3564GER", 3156825.00);
+        Car car4= new Car ("Aston Martin","DB10",2015,"3564GER", 3156825.00);
         Person dimple = personRepository.findOne(2L);
         car4.setOwner(dimple);
         carRepository.save(car4);
 
 
-        Car car5= new Car (5L,"RomeoAlfaJulietta","DramaMasterpiece",2013,"4749JAV",66200.00);
+        Car car5= new Car ("RomeoAlfaJulietta","DramaMasterpiece",2013,"4749JAV",66200.00);
         Person judith = personRepository.findOne(8L);
         car5.setOwner(judith);
         carRepository.save(car5);
 
 
-        Car car6= new Car (6L,"BMW","LoveAtFirstDrive",2014,"9065AND", 75399.00);
+        Car car6= new Car ("BMW","LoveAtFirstDrive",2014,"9065AND", 75399.00);
         car6.setOwner(dimple);
         carRepository.save(car6);
 
-        Car car7= new Car(7L,"Jaguar","FPACE",2015,"1235ENG",45000.00 );
+        Car car7= new Car("Jaguar","FPACE",2015,"1235ENG",45000.00 );
         Person ricard = personRepository.findOne(5L);
         car7.setOwner(ricard);
         carRepository.save(car7);
 
 
-        Car car8= new Car (8L,"BMW","CABRIO",2014,"9065AME", 47550.00);
+        Car car8= new Car ("BMW","CABRIO",2014,"9065AME", 47550.00);
         Person oscar = personRepository.findOne(9L);
         car8.setOwner(oscar);
         carRepository.save(car8);
 
 
-        Car car9= new Car(9L,"Jaguar","FPACE",2015,"5321ENG",45000.00 );
+        Car car9= new Car("Jaguar","FPACE",2015,"5321ENG",45000.00 );
         car9.setOwner(dimple);
         carRepository.save(car9);
 
